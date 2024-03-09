@@ -1,0 +1,77 @@
+@use 'reset';
+
+$white: hsl(0, 0%, 100%);
+$light-gray: hsl(212, 45%, 89%);
+$grayish-blue: hsl(220, 15%, 55%);
+$dark-blue: hsl(218, 44%, 22%);
+
+$font-med: 1.5rem;
+$font-large: 2.2rem;
+$font-regular: 400;
+$font-bold: 700;
+
+$spacing: 1.6rem;
+
+$size-mobile: 375px;
+$size-desktop: 1440px;
+
+@mixin outfit-font($fsize: $font-med, $fweight: $font-regular) {
+  font-family: 'Outfit', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: $fweight;
+  font-style: normal;
+  font-size: $fsize;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: $light-gray;
+}
+
+.container {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .card {
+    max-width: 32rem;
+    padding: $spacing;
+    background-color: $white;
+    border-radius: 2rem;
+
+    .image-container {
+      border-radius: 1rem;
+      overflow: hidden;
+      margin-bottom: 2.4rem;
+    }
+
+    .text-box {
+      padding: 0 $spacing;
+      text-align: center;
+      margin-bottom: calc(4rem - $spacing);
+
+      h3 {
+        @include outfit-font($font-large, $font-bold);
+
+        color: $dark-blue;
+        margin-bottom: $spacing;
+      }
+
+      p {
+        @include outfit-font();
+
+        color: $grayish-blue;
+      }
+    }
+  }
+}
+
+@media (width < $size-mobile) {
+  .container {
+    min-width: 32rem;
+  }
+}
